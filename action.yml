@@ -8,9 +8,12 @@ inputs:
     default: './dummy.txt'
   sample-string:
     description: String input
+    required: true
 runs:
   using: 'docker'
   image: './Dockerfile'
   args:
+    # NOTE: Order is important here. This order must match the order and 
+    # number of the args defined in the CLI_ARG literal in main.py
     - ${{ inputs.some-file-path }}
     - ${{ inputs.sample-string }}
