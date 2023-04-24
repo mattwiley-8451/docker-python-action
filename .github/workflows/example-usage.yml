@@ -3,7 +3,7 @@ name: Example Usage
 on: push
 
 env:
-  DATA_FILE_PATH: ./step-one-output.txt
+  DATA_FILE_PATH: ./data-file.txt
 
 jobs:
   action-based-job:
@@ -18,5 +18,5 @@ jobs:
         uses: ./
         with:
           some-file-path: "${{ env.DATA_FILE_PATH }}"
-          sample-string: "matt-wiley-test"
+          sample-string: "pulaski-at-night"
       
