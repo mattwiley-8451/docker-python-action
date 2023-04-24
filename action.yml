@@ -1,0 +1,16 @@
+# action.yml
+name: 'Docker Shell Action'
+description: 'Greet someone and record the time'
+inputs:
+  some-file-path:
+    description: Path to text file we need from previous step.
+    required: true
+    default: './dummy.txt'
+  sample-string:
+    description: String input
+runs:
+  using: 'docker'
+  image: './Dockerfile'
+  args:
+    - ${{ inputs.some-file-path }}
+    - ${{ inputs.sample-string }}

@@ -1,0 +1,24 @@
+name: Example Usage
+
+on: 
+  push:
+
+env:
+  DATA_FILE_PATH: ./step-one-output.txt
+
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "HELLO" > "${{ env.DATA_FILE_PATH }}"
+
+  dsa-job:
+    needs:
+      - first-job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use DSA Action
+        uses: ./
+        with:
+          some-file-path: "${{ env.DATA_FILE_PATH }}"
+          sample-string: "matt-wiley-test"
