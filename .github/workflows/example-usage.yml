@@ -1,24 +1,22 @@
 name: Example Usage
 
-on: 
-  push:
+on: push
 
 env:
   DATA_FILE_PATH: ./step-one-output.txt
 
 jobs:
-  first-job:
+  action-based-job:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "HELLO" > "${{ env.DATA_FILE_PATH }}"
+      - uses: actions/checkout@v3
 
-  dsa-job:
-    needs:
-      - first-job
-    runs-on: ubuntu-latest
-    steps:
+      - name: Create data file
+        run: echo "HELLO" > "${{ env.DATA_FILE_PATH }}"
+      
       - name: Use DSA Action
         uses: ./
         with:
           some-file-path: "${{ env.DATA_FILE_PATH }}"
           sample-string: "matt-wiley-test"
+      
