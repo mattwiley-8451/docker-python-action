@@ -20,6 +20,9 @@ program:
 def main():
     argsy = Argsy(config_str=CLI_ARGS)
     parsed_args = argsy.parse_args(args=sys.argv[1:]).get('args')
-    print(json.dumps(parsed_args))
+    print(json.dumps(parsed_args, indent=2))
+
+    with open(parsed_args.get('some_file_path'), 'r') as input_file:
+        print("\n".join(input_file.readlines()))
 
 main()
